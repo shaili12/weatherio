@@ -24,7 +24,6 @@ const addEventOnElement = function(elements, eventType, callback){
  */
 const searchView = document.querySelector("[data-search-view]");
 const serachTogglers = document.querySelectorAll("[data-search-toggler]");
-console.log(serachTogglers);
 
 const toggleSearch = ()=> searchView.classList.toggle("active");
 addEventOnElement(serachTogglers, "click", toggleSearch);
@@ -37,15 +36,14 @@ const searchField = document.querySelector("[data-search-field]");
 const searchResult = document.querySelector("[data-search-result]");
 
 let searchTimeout = null;
-let searchTimeoutDuration = 500;
+const searchTimeoutDuration = 500;
 
 searchField.addEventListener("input",function(){
     searchTimeout ?? clearTimeout(searchTimeout);
     if(!searchField.value){
-        searchField.classList.remove("active");
-        searchField.innerHTML = "";
+        searchResult.classList.remove("active");
+        searchResult.innerHTML = "";
         searchField.classList.remove("searching");
-
     }else{
         searchField.classList.add("searching");
     }
@@ -64,13 +62,13 @@ searchField.addEventListener("input",function(){
                     searchItem.classList.add("view-item");
 
                     searchItem.innerHTML=`
-                    <span class="m-icon">location_on</span>
-                    <div>
-                        <p class="item-title">${name}</p>
-                        <p class="label-2 item-subtitle"> ${state || ""} ${country} </p>
-
-                    </div>
-                    <a href="#/weather?lat=${lat}&lon=${lon}" class="item-link has-state" arial-label ="${name} weather" data-search-toggler></a>
+                        <span class="m-icon">location_on</span>
+                        <div>
+                            <p class="item-title">${name}</p>
+                            <p class="label-2 item-subtitle"> ${state || ""} ${country} </p>
+  
+                        </div>
+                        <a href="#/weather?lat=${lat}&lon=${lon}" class="item-link has-state" arial-label ="${name} weather" data-search-toggler></a>
                     `
 
                     searchResult.querySelector("[data-search-list]").appendChild(searchItem);
