@@ -986,9 +986,11 @@ article.container::before{
  .search-wrapper{
   border-block-end:none;
  }
- .search-wrapper > .m-icon {
+ /* .search-wrapper > .m-icon {
   display: block;
- }
+  position: relative;
+  translateY:-100% ;
+ } */
 
  .search-field,
  .search-view .view-list{
