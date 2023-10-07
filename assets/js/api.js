@@ -34,6 +34,6 @@ export const URL ={
      * @param {string} query search query e.g. : "London", "New York";
      */
     geo(query){
-        return`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5`;
+        return`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5`;
     }
 }
