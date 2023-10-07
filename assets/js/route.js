@@ -1,5 +1,5 @@
 /**
- * @fileoverview Menage all routes
+ * @fileoverview Manage all routes
  * @author shailimaurya<shailimaurya945@gmail.com>
  */
 
@@ -12,11 +12,9 @@ const defaultLocation = "#/weather?lat=26.7895579&lon=82.7231355";
 const currentLocation = function(){
    window.navigator.geolocation.getCurrentPosition(res=>{
     const {latitude, longitude}=res.coords;
-    // console.log("latitude:", latitude);
     updateWeather(`lat=${latitude}`, `lon=${longitude}`);
    }, err=>{
     window.location.hash=defaultLocation;
-    // console.log("running");
    })
 }
 
@@ -34,7 +32,9 @@ const routes = new Map([
 
 const checkHash = function(){
    const requestURL=window.location.hash.slice(1);
+   console.log(requestURL);
    const [route, query] = requestURL.includes? requestURL.split("?") : [requestURL];
+   console.log(route, query);
    routes.get(route) ? routes.get(route)(query) : error404();
 }  
 

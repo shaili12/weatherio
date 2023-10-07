@@ -163,7 +163,6 @@ fetchData(URL.currentWeather(lat,lon), function(currentWeather){
     `;
 
      fetchData(URL.reverseGeo(lat,lon), function([{name, country}]){
-        console.log(name, country);
         document.querySelectorAll("p.meta-text")[1].innerHTML = `${name}, ${country}`;
      })
     currentWeatherSection.appendChild(card);
